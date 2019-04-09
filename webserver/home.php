@@ -8,7 +8,7 @@
 
 				<a class="button" href="member.php">Member Login</a>
 				<a class="button" href="librarian.php">Staff Login</a>
-				<a class="buttonlogout" href="admin.php">Admin Login</a>
+				<a class="button" href="admin.php">Admin Login</a>
 
 			</div>
 		</center>
