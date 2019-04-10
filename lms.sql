@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2019 at 06:34 AM
+-- Generation Time: Apr 10, 2019 at 10:25 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -269,7 +269,9 @@ ALTER TABLE `administrator`
 -- Indexes for table `author`
 --
 ALTER TABLE `author`
-  ADD PRIMARY KEY (`First_Name`,`Middle_Name`,`Last_Name`);
+  ADD PRIMARY KEY (`First_Name`,`Middle_Name`,`Last_Name`),
+  ADD KEY `Middle_Name` (`Middle_Name`),
+  ADD KEY `Last_Name` (`Last_Name`);
 
 --
 -- Indexes for table `available`
@@ -283,7 +285,8 @@ ALTER TABLE `available`
 ALTER TABLE `book`
   ADD PRIMARY KEY (`ISBN`),
   ADD KEY `Item_ID` (`Item_ID`),
-  ADD KEY `Publisher_Name` (`Publisher_Name`);
+  ADD KEY `Publisher_Name` (`Publisher_Name`),
+  ADD KEY `Publisher_ID` (`Publisher_ID`);
 
 --
 -- Indexes for table `booked`
@@ -347,7 +350,8 @@ ALTER TABLE `member`
 -- Indexes for table `publisher`
 --
 ALTER TABLE `publisher`
-  ADD PRIMARY KEY (`Name`,`ID`);
+  ADD PRIMARY KEY (`Name`,`ID`),
+  ADD UNIQUE KEY `ID` (`ID`);
 
 --
 -- Indexes for table `reserves`
@@ -375,7 +379,9 @@ ALTER TABLE `user`
 --
 ALTER TABLE `writes`
   ADD PRIMARY KEY (`Author_Fname`,`Author_Mname`,`Author_Lname`,`ISBN`),
-  ADD KEY `ISBN` (`ISBN`);
+  ADD KEY `ISBN` (`ISBN`),
+  ADD KEY `Author_Mname` (`Author_Mname`),
+  ADD KEY `Author_Lname` (`Author_Lname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -426,7 +432,8 @@ ALTER TABLE `available`
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`Item_ID`) REFERENCES `inventory` (`Item_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`Publisher_Name`) REFERENCES `publisher` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`Publisher_Name`) REFERENCES `publisher` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `book_ibfk_3` FOREIGN KEY (`Publisher_ID`) REFERENCES `publisher` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `booked`
@@ -496,8 +503,10 @@ ALTER TABLE `user`
 -- Constraints for table `writes`
 --
 ALTER TABLE `writes`
-  ADD CONSTRAINT `writes_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `writes_ibfk_2` FOREIGN KEY (`Author_Fname`) REFERENCES `author` (`First_Name`);
+  ADD CONSTRAINT `writes_ibfk_1` FOREIGN KEY (`Author_Fname`) REFERENCES `author` (`First_Name`),
+  ADD CONSTRAINT `writes_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`),
+  ADD CONSTRAINT `writes_ibfk_3` FOREIGN KEY (`Author_Mname`) REFERENCES `author` (`Middle_Name`),
+  ADD CONSTRAINT `writes_ibfk_4` FOREIGN KEY (`Author_Lname`) REFERENCES `author` (`Last_Name`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
