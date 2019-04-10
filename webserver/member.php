@@ -12,7 +12,7 @@
 				<a class="button" href="underconstruction.php">Reserve Study Room</a>
 				<a class="button" href="underconstruction.php">View Reservations</a>
 				<a class="button" href="underconstruction.php">Remove Reservation</a>
-				<a class="buttonlogout" href="home.php">Logout</a>
+				<a class="buttonlogout" href="index.php">Logout</a>
 
 			</div>
 		</center>

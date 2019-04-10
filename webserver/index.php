@@ -1,11 +1,16 @@
 <html>
-<body>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<body>
+		<center>
+			<div class="content">
+	  
+				<h1><p><font size="7" color="#ffffff">Library Management System</font></p></h1>
 
-<form action="add.php" method="post">
-   Name: <input type="text" name="name"><br>
-   E-mail: <input type="text" name="email"><br>
-   <input type="submit" value="add">
-</form>
+				<a class="button" href="member.php">Member Login</a>
+				<a class="button" href="librarian.php">Staff Login</a>
+				<a class="button" href="admin.php">Admin Login</a>
 
-</body>
+			</div>
+		</center>
+	</body>
 </html>

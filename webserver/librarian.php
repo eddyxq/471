@@ -11,7 +11,7 @@
 				<a class="button" href="underconstruction.php">Lend Book</a>
 				<a class="button" href="underconstruction.php">Add to Inventory</a>
 				<a class="button" href="underconstruction.php">Edit Inventory</a>
-				<a class="buttonlogout" href="home.php">Logout</a>
+				<a class="buttonlogout" href="index.php">Logout</a>
 
 			</div>
 		</center>
