@@ -8,7 +8,8 @@
 
 				<a class="button" href="underconstruction.php">Search Book</a>
 				<a class="button" href="underconstruction.php">Search Member</a>
-				<a class="button" href="underconstruction.php">Lend Book</a>
+				<a class="button" href="lendbook.php">Lend Book</a>
+				<a class="button" href="returnbook.php">Return Book</a>
 				<a class="button" href="addInventory.php">Add to Inventory</a>
 				<a class="button" href="viewInventory.php">Edit Inventory</a>
 				<a class="buttonlogout" href="index.php">Logout</a>
