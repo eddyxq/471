@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 06:45 AM
+-- Generation Time: Apr 11, 2019 at 07:57 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -272,7 +272,7 @@ CREATE TABLE `user` (
   `Street_Name` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL,
   `Country` varchar(50) NOT NULL,
-  `Phone_Number` int(10) NOT NULL
+  `Phone_Number` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `First_Name`, `Middle_Name`, `Last_Name`, `Street_Name`, `City`, `Country`, `Phone_Number`) VALUES
-(1, 'Trilok', 'K', 'Patel', 'Laurie', 'Calgary', 'Canada', 1234);
+(1, 'Trilok', 'K', 'Patel', 'Laurie', 'Calgary', 'Canada', '1234');
 
 -- --------------------------------------------------------
 
