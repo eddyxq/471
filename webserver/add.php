@@ -8,7 +8,7 @@ echo $name. "<br>". $email. "<br>";
 
 
 // Create connection
-$con=mysqli_connect("localhost","root","","471");
+$con=mysqli_connect("localhost","root","","lms");
 
 // Check connection
 if (mysqli_connect_errno($con))
