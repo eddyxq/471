@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 02:38 AM
+-- Generation Time: Apr 11, 2019 at 06:45 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -57,7 +57,7 @@ CREATE TABLE `author` (
 --
 
 CREATE TABLE `available` (
-  `Room_Number` int(11) NOT NULL,
+  `Room_Number` varchar(11) NOT NULL,
   `Date_Available` date NOT NULL,
   `Time_Available` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -69,8 +69,8 @@ CREATE TABLE `available` (
 --
 
 CREATE TABLE `book` (
-  `Item_ID` int(11) NOT NULL,
-  `ISBN` int(13) NOT NULL,
+  `ISBN` varchar(13) NOT NULL,
+  `Item_ID` varchar(11) NOT NULL,
   `Title` varchar(100) NOT NULL,
   `Edition` tinyint(4) NOT NULL,
   `Language` varchar(25) NOT NULL,
@@ -80,6 +80,13 @@ CREATE TABLE `book` (
   `Lendable` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`ISBN`, `Item_ID`, `Title`, `Edition`, `Language`, `Publisher_Name`, `Publisher_ID`, `Publish_Date`, `Lendable`) VALUES
+('9999999999999', '1', 'Fundamentals of Database Systems', 7, 'English', 'Pearson', 1, '2019-04-01', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -87,7 +94,7 @@ CREATE TABLE `book` (
 --
 
 CREATE TABLE `booked` (
-  `Room_Number` int(11) NOT NULL,
+  `Room_Number` varchar(11) NOT NULL,
   `Date_Booked` date NOT NULL,
   `Time_Booked` time NOT NULL,
   `Booking_Duration` int(5) NOT NULL
@@ -101,11 +108,18 @@ CREATE TABLE `booked` (
 
 CREATE TABLE `borrows` (
   `UserID` int(11) NOT NULL,
-  `ISBN` int(13) NOT NULL,
+  `ISBN` varchar(13) NOT NULL,
   `Date_Borrowed` date NOT NULL,
   `Date_Returned` date DEFAULT NULL,
   `Borrow_Duration` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `borrows`
+--
+
+INSERT INTO `borrows` (`UserID`, `ISBN`, `Date_Borrowed`, `Date_Returned`, `Borrow_Duration`) VALUES
+(1, '9999999999999', '2019-04-10', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +140,7 @@ CREATE TABLE `fees` (
 --
 
 CREATE TABLE `genre` (
-  `ISBN` int(13) NOT NULL,
+  `ISBN` varchar(13) NOT NULL,
   `Genre` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -137,10 +151,17 @@ CREATE TABLE `genre` (
 --
 
 CREATE TABLE `inventory` (
-  `Item_ID` int(11) NOT NULL,
+  `Item_ID` varchar(11) NOT NULL,
   `Item_Type` varchar(50) NOT NULL,
   `Item_Location` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`Item_ID`, `Item_Type`, `Item_Location`) VALUES
+('1', 'Book', 'FirstFloor');
 
 -- --------------------------------------------------------
 
@@ -151,7 +172,7 @@ CREATE TABLE `inventory` (
 CREATE TABLE `lends` (
   `UserID` int(11) NOT NULL,
   `EmployeeID` int(11) NOT NULL,
-  `ISBN` int(13) NOT NULL
+  `ISBN` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -185,8 +206,15 @@ CREATE TABLE `library` (
 
 CREATE TABLE `member` (
   `UserID` int(11) NOT NULL,
-  `Num_Of_Books_Borrowed` int(11) NOT NULL
+  `Num_Of_Books_Borrowed` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`UserID`, `Num_Of_Books_Borrowed`) VALUES
+(1, 0);
 
 -- --------------------------------------------------------
 
@@ -200,6 +228,13 @@ CREATE TABLE `publisher` (
   `Location` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `publisher`
+--
+
+INSERT INTO `publisher` (`Name`, `ID`, `Location`) VALUES
+('Pearson', 1, 'Canada');
+
 -- --------------------------------------------------------
 
 --
@@ -208,7 +243,7 @@ CREATE TABLE `publisher` (
 
 CREATE TABLE `reserves` (
   `UserID` int(11) NOT NULL,
-  `Room_Number` int(11) NOT NULL
+  `Room_Number` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -218,7 +253,7 @@ CREATE TABLE `reserves` (
 --
 
 CREATE TABLE `study_rooms` (
-  `Room_Number` int(11) NOT NULL,
+  `Room_Number` varchar(11) NOT NULL,
   `Capacity` int(11) NOT NULL,
   `Lib_Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -240,6 +275,13 @@ CREATE TABLE `user` (
   `Phone_Number` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`UserID`, `First_Name`, `Middle_Name`, `Last_Name`, `Street_Name`, `City`, `Country`, `Phone_Number`) VALUES
+(1, 'Trilok', 'K', 'Patel', 'Laurie', 'Calgary', 'Canada', 1234);
+
 -- --------------------------------------------------------
 
 --
@@ -250,7 +292,7 @@ CREATE TABLE `writes` (
   `Author_Fname` varchar(50) NOT NULL,
   `Author_Mname` varchar(15) NOT NULL,
   `Author_Lname` varchar(50) NOT NULL,
-  `ISBN` int(13) NOT NULL
+  `ISBN` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -324,7 +366,7 @@ ALTER TABLE `inventory`
 ALTER TABLE `lends`
   ADD PRIMARY KEY (`UserID`,`EmployeeID`,`ISBN`),
   ADD KEY `EmployeeID` (`EmployeeID`),
-  ADD KEY `ISBN` (`ISBN`);
+  ADD KEY `lends_ibfk_3` (`ISBN`);
 
 --
 -- Indexes for table `librarian`
@@ -357,7 +399,7 @@ ALTER TABLE `publisher`
 --
 ALTER TABLE `reserves`
   ADD PRIMARY KEY (`UserID`,`Room_Number`),
-  ADD KEY `Room_Number` (`Room_Number`);
+  ADD KEY `reserves_ibfk_1` (`Room_Number`);
 
 --
 -- Indexes for table `study_rooms`
@@ -377,9 +419,9 @@ ALTER TABLE `user`
 --
 ALTER TABLE `writes`
   ADD PRIMARY KEY (`Author_Fname`,`Author_Mname`,`Author_Lname`,`ISBN`),
-  ADD KEY `ISBN` (`ISBN`),
   ADD KEY `Author_Mname` (`Author_Mname`),
-  ADD KEY `Author_Lname` (`Author_Lname`);
+  ADD KEY `Author_Lname` (`Author_Lname`),
+  ADD KEY `ISBN` (`ISBN`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -392,12 +434,6 @@ ALTER TABLE `administrator`
   MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `inventory`
---
-ALTER TABLE `inventory`
-  MODIFY `Item_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `librarian`
 --
 ALTER TABLE `librarian`
@@ -407,7 +443,7 @@ ALTER TABLE `librarian`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -444,7 +480,7 @@ ALTER TABLE `booked`
 --
 ALTER TABLE `borrows`
   ADD CONSTRAINT `borrows_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `member` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `borrows_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `member` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `borrows_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `fees`
@@ -464,7 +500,7 @@ ALTER TABLE `genre`
 ALTER TABLE `lends`
   ADD CONSTRAINT `lends_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `librarian` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `lends_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `librarian` (`EmployeeID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `lends_ibfk_3` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lends_ibfk_3` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `librarian`
@@ -496,9 +532,9 @@ ALTER TABLE `study_rooms`
 --
 ALTER TABLE `writes`
   ADD CONSTRAINT `writes_ibfk_1` FOREIGN KEY (`Author_Fname`) REFERENCES `author` (`First_Name`),
-  ADD CONSTRAINT `writes_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`),
   ADD CONSTRAINT `writes_ibfk_3` FOREIGN KEY (`Author_Mname`) REFERENCES `author` (`Middle_Name`),
-  ADD CONSTRAINT `writes_ibfk_4` FOREIGN KEY (`Author_Lname`) REFERENCES `author` (`Last_Name`);
+  ADD CONSTRAINT `writes_ibfk_4` FOREIGN KEY (`Author_Lname`) REFERENCES `author` (`Last_Name`),
+  ADD CONSTRAINT `writes_ibfk_5` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
