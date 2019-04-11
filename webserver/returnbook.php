@@ -1,6 +1,6 @@
-
 <html>
-	<body>
+	<link rel="stylesheet" type="text/css" href="main.css">
+		<body>
 			<?php
 
 // Create connection
