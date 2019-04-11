@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2019 at 10:25 PM
+-- Generation Time: Apr 11, 2019 at 02:38 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -90,7 +90,7 @@ CREATE TABLE `booked` (
   `Room_Number` int(11) NOT NULL,
   `Date_Booked` date NOT NULL,
   `Time_Booked` time NOT NULL,
-  `Booking_Duration` time NOT NULL
+  `Booking_Duration` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -104,7 +104,7 @@ CREATE TABLE `borrows` (
   `ISBN` int(13) NOT NULL,
   `Date_Borrowed` date NOT NULL,
   `Date_Returned` date DEFAULT NULL,
-  `Borrow_Duration` time NOT NULL
+  `Borrow_Duration` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -237,8 +237,7 @@ CREATE TABLE `user` (
   `Street_Name` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL,
   `Country` varchar(50) NOT NULL,
-  `Phone_Number` int(10) NOT NULL,
-  `Lib_Name` varchar(50) NOT NULL
+  `Phone_Number` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -371,8 +370,7 @@ ALTER TABLE `study_rooms`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`UserID`),
-  ADD KEY `user_ibfk_1` (`Lib_Name`);
+  ADD PRIMARY KEY (`UserID`);
 
 --
 -- Indexes for table `writes`
@@ -492,12 +490,6 @@ ALTER TABLE `reserves`
 --
 ALTER TABLE `study_rooms`
   ADD CONSTRAINT `study_rooms_ibfk_1` FOREIGN KEY (`Lib_Name`) REFERENCES `library` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Lib_Name`) REFERENCES `library` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `writes`
