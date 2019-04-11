@@ -16,7 +16,7 @@ while($row = mysqli_fetch_array($result)){
  
  ?>
  
-	<form action="view.php?job=update" method="post">
+	<form action="adminViewUser.php?job=update" method="post">
 		<input name="UserID" type="hUserIDden" value=<?php echo $row['UserID'];?>>
 		First Name: <input type="text" name="First_Name" value='<?php echo $row['First_Name'];?>'><br>
 		Middle_Name: <input type="text" name="Middle_Name" value='<?php echo $row['Middle_Name'];?>'><br>
@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($result)){
 		<input type="submit" value="Update">
 	</form>
 
-	<form action="view.php" method="post">
+	<form action="admminViewUser.php" method="post">
 		<input type="submit" value="back">
 	</form>
   
