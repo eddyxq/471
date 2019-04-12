@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2019 at 08:39 AM
+-- Generation Time: Apr 12, 2019 at 08:30 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -85,7 +85,6 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`ISBN`, `Item_ID`, `Title`, `Edition`, `Language`, `Publisher_Name`, `Publisher_ID`, `Publish_Date`, `Lendable`) VALUES
-('1111111111111', '2', 'Learn you a SQL', 2, 'English', 'Pearson', 1, '2019-03-04', 1),
 ('9999999999999', '1', 'Fundamentals of Database Systems', 7, 'English', 'Pearson', 1, '2019-04-01', 1);
 
 -- --------------------------------------------------------
@@ -100,17 +99,6 @@ CREATE TABLE `booked` (
   `Time_Booked` time NOT NULL,
   `Booking_Duration` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `booked`
---
-
-INSERT INTO `booked` (`Room_Number`, `Date_Booked`, `Time_Booked`, `Booking_Duration`) VALUES
-('101', '2019-04-12', '00:12:00', 2),
-('102', '2019-04-25', '15:05:00', 2),
-('103', '2019-04-17', '12:01:00', 1),
-('104', '2019-04-17', '12:01:00', 1),
-('105', '2019-04-18', '01:59:00', 2);
 
 -- --------------------------------------------------------
 
@@ -131,8 +119,8 @@ CREATE TABLE `borrows` (
 --
 
 INSERT INTO `borrows` (`UserID`, `ISBN`, `Date_Borrowed`, `Date_Returned`, `Borrow_Duration`) VALUES
-(1, '1111111111111', '2019-04-10', '0000-00-00', 2),
-(4, '1111111111111', '2019-04-17', '0000-00-00', 2);
+(1, '9999999999999', '2019-04-12', '0000-00-00', 2),
+(2, '9999999999999', '2019-04-12', '0000-00-00', 4);
 
 -- --------------------------------------------------------
 
@@ -174,8 +162,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`Item_ID`, `Item_Type`, `Item_Location`) VALUES
-('1', 'Book', 'FirstFloor'),
-('2', 'Book', 'FirstFloor');
+('1', 'Book', 'FirstFloor');
 
 -- --------------------------------------------------------
 
@@ -198,8 +185,16 @@ CREATE TABLE `lends` (
 CREATE TABLE `librarian` (
   `UserID` int(11) NOT NULL,
   `EmployeeID` int(11) NOT NULL,
-  `Date_Hired` date NOT NULL
+  `Date_Hired` date NOT NULL,
+  `Password` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `librarian`
+--
+
+INSERT INTO `librarian` (`UserID`, `EmployeeID`, `Date_Hired`, `Password`) VALUES
+(3, 1, '2019-05-12', 'pass');
 
 -- --------------------------------------------------------
 
@@ -220,16 +215,17 @@ CREATE TABLE `library` (
 
 CREATE TABLE `member` (
   `UserID` int(11) NOT NULL,
-  `Num_Of_Books_Borrowed` int(11) NOT NULL DEFAULT '0'
+  `Num_Of_Books_Borrowed` int(11) NOT NULL DEFAULT '0',
+  `Password` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`UserID`, `Num_Of_Books_Borrowed`) VALUES
-(1, 0),
-(4, 0);
+INSERT INTO `member` (`UserID`, `Num_Of_Books_Borrowed`, `Password`) VALUES
+(1, 0, 'pass'),
+(2, 0, 'passTest');
 
 -- --------------------------------------------------------
 
@@ -261,14 +257,6 @@ CREATE TABLE `reserves` (
   `Room_Number` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `reserves`
---
-
-INSERT INTO `reserves` (`UserID`, `Room_Number`) VALUES
-(1, '104'),
-(1, '105');
-
 -- --------------------------------------------------------
 
 --
@@ -287,11 +275,7 @@ CREATE TABLE `study_rooms` (
 
 INSERT INTO `study_rooms` (`Room_Number`, `Capacity`, `Lib_Name`) VALUES
 ('100', 5, 'TFDL'),
-('101', 5, 'TFDL'),
-('102', 6, 'TFDL'),
-('103', 4, 'TFDL'),
-('104', 10, 'TFDL'),
-('105', 5, 'TFDL');
+('101', 5, 'TFDL');
 
 -- --------------------------------------------------------
 
@@ -315,8 +299,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `First_Name`, `Middle_Name`, `Last_Name`, `Street_Name`, `City`, `Country`, `Phone_Number`) VALUES
-(1, 'Trilok', 'K', 'Patel', 'Laurie', 'Edmonton', 'Canada', '1234'),
-(4, 'Donald', 'M', 'Trump', 'Boulevard', 'London', 'Canada', '1234567890');
+(1, 'Donald', 'M', 'Nuts', '135', 'Calgary', 'Canada', '4829119'),
+(2, 'Deez', 'M', 'Nuts', '1234', 'Calgary', 'Canada', '4829119'),
+(3, 'Narshbla', 'Da', 'librar', '135', 'Calgary', 'Canada', '4829119');
 
 -- --------------------------------------------------------
 
@@ -473,7 +458,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `librarian`
 --
 ALTER TABLE `librarian`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

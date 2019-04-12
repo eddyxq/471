@@ -29,20 +29,23 @@
 
 			$result = mysqli_query($con,"SELECT * FROM inventory");
 
-			echo "<table border='1'>
-			<tr>
+			echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
+			
+			echo "<table border='1' BORDERCOLOR='#0000FF'>
+			<tr style='background-color:#008FFF'>
 			<th>Item ID</th>
 			<th>Item Type</th>
 			<th>Item Location</th>
+			<th colspan='2'>Modify</th>
 			</tr>";
 
 			while($row = mysqli_fetch_array($result)){
-				echo "<tr>";
+				echo '<tr style="background-color:#ffff99">';
 				echo "<td>" . $row['Item_ID'] . "</td>";
 				echo "<td>" . $row['Item_Type'] . "</td>";
 				echo "<td>" . $row['Item_Location'] . "</td>";
 				echo "<td><a href='updateItem.php?Item_ID= " . $row['Item_ID'] . "'>Update</a></td>";
-				echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='viewInventory.php?job=delete&amp;Item_ID= " . $row['Item_ID'] . "'>DELETE</a></td>";
+				echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='viewInventory.php?job=delete&amp;Item_ID= " . $row['Item_ID'] . "'>Delete</a></td>";
 
 				echo "</tr>";
 			}
@@ -52,9 +55,8 @@
 			mysqli_close($con);
 			?>
 
-			<form action="librarian.php" method="post">
-				<input type="submit" value="back">
-			</form>
+		
+			<a class="button" href="librarian.php">Back</a>
 		
 		</body>
 </html>
