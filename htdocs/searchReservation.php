@@ -14,34 +14,30 @@
 		}
 
 		$result = mysqli_query($con, "SELECT\n"
-									. "    member.UserID,\n"
-									. "    user.First_Name,\n"
-									. "    COUNT(*) AS Numb_Of_Books_Borrowed\n"
+									. "    *\n"
 									. "FROM\n"
 									. "    `user`,\n"
-									. "    `member`,\n"
-									. "    `borrows`\n"
+									. "    `booked`,\n"
+									. "    `reserves`\n"
 									. "WHERE\n"
-									. "    member.UserID = ".$UserID." AND member.UserID = borrows.UserID AND borrows.Date_Returned = 00-00-0000\n"
-									. "GROUP BY\n"
-									. "    UserID\n"
-									. "HAVING\n"
-									. "    Numb_Of_Books_Borrowed > 0");
+									. "    reserves.UserID = ".$UserID." AND user.UserID = reserves.UserID AND booked.Room_Number = reserves.Room_Number");
 
 		echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
 
 		echo "<table border='1' BORDERCOLOR='#0000FF'>
 		<tr style='background-color:#008FFF'>
-		<th>User ID</th>
-		<th>First_Name</th>
-		<th>Num_Of_Books_Borrowed</th>
+		<th>Room_Number</th>
+		<th>Date_Booked</th>
+		<th>Time_Booked</th>
+		<th>Booking_Duration</th>
 		</tr>";
 
 		while($row = mysqli_fetch_array($result)){
 			echo '<tr style="background-color:#ffff99">';
-			echo "<td>" . $row['UserID'] . "</td>";
-			echo "<td>" . $row['First_Name'] . "</td>";
-			echo "<td>" . $row['Numb_Of_Books_Borrowed'] . "</td>";
+			echo "<td>" . $row['Room_Number'] . "</td>";
+			echo "<td>" . $row['Date_Booked'] . "</td>";
+			echo "<td>" . $row['Time_Booked'] . "</td>";
+			echo "<td>" . $row['Booking_Duration'] . "</td>";
 			//echo "<td><a href='adminUpdateUser.php?UserID= " . $row['UserID'] . "'>Update</a></td>";
 			//echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='adminViewUser.php?job=delete&amp;UserID= " . $row['UserID'] . "'>DELETE</a></td>";
 			echo "</tr>";

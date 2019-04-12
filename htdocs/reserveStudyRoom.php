@@ -33,10 +33,6 @@
 		mysqli_close($con);
 		?>
 		
-		<div>
-			<form action="reserveRoom.php" method="post">
-				<input type="submit" value="Back">
-			</form>
-		</div>
+		<a class="button" href="reserveRoom.php">Return</a>
 	</body>
 </html>
