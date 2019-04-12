@@ -29,13 +29,14 @@
 									. "    `member`,\n"
 									. "    `borrows`\n"
 									. "WHERE\n"
-									. "    member.UserID = '".$UserID."' AND member.UserID = user.UserID  AND member.UserID = borrows.UserID AND borrows.Date_Returned = 00-00-0000\n"
+									. "    member.UserID = 1 AND member.UserID = borrows.UserID AND borrows.Date_Returned = 00-00-0000\n"
 									. "GROUP BY\n"
 									. "    UserID\n"
 									. "HAVING\n"
 									. "    Numb_Of_Books_Borrowed > 0");
 
 		echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
+
 		echo "<table border='1'>
 		<tr>
 		<th>User ID</th>
