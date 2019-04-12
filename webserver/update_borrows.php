@@ -1,10 +1,6 @@
 <?php
 
-$UserID = $_POST["UserID"];
-$ISBN = $_POST["ISBN"];
-$Date_Borrowed = $_POST["Date_Borrowed"];
-$Date_Returned = $_POST["Date_Returned"];
-$Borrow_Duration = $_POST["Borrow_Duration"];
+$UserID = $_GET["UserID"];
 
 // Create connection
 $con=mysqli_connect("localhost","root","","lms");
@@ -14,7 +10,7 @@ if (mysqli_connect_errno($con)){
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
   
-$result = mysqli_query($con,"SELECT * FROM borrows where UserID='$UserID'");
+$result = mysqli_query($con,"SELECT * FROM borrows where UserID=".$UserID);
 
 while($row = mysqli_fetch_array($result)){
  
@@ -30,7 +26,7 @@ while($row = mysqli_fetch_array($result)){
 	</form>
 
 	<form action="returnbook.php" method="post">
-		<input type="submit" value="Back">
+		<input type="submit" value="back">
 	</form>
   
 <?php

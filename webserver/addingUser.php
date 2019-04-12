@@ -11,16 +11,9 @@
 		$country = $_GET["country"];
 		$phone_number = $_GET["phone_number"];
 		$formUserType = $_GET["formUserType"];
+		$password = $_GET["password"];
+		$Date_Registered = $_GET["Date_Registered"];
 		
-		/*
-		echo $first_name. "<br>".
-		$middle_name. "<br>".
-		$last_name. "<br>".
-		$street_name. "<br>".
-		$city. "<br>".
-		$country. "<br>".
-		$phone_number. "<br>";
-		*/
 		// Create connection
 		$con=mysqli_connect("localhost","root","","lms");
 
@@ -32,12 +25,17 @@
 					
 		$sql = "INSERT INTO user (UserID, first_name, middle_name, last_name, street_name, city, country, phone_number) VALUES ('". $UserID ."', '". $first_name."','". $middle_name ."','". $last_name ."','". $street_name ."','". $city ."','". $country ."','". $phone_number ."')";
 		 
-		//if (strcmp($formUserType, "Member") == 0)
+		if (strcmp($formUserType, "Member") == 0)
+		{
+		$sql2 = "INSERT INTO `member`(`UserID`, `Num_Of_Books_Borrowed`, Password)\n"
+    . "VALUES('". $UserID ."', 0, '". $password ."')";
+		}
 		
-		//$sql2 = "INSERT INTO member (UserID, Num_Of_Books_Borrowed) VALUES('". $UserID ."')";
-		$sql2 = "INSERT INTO `member`(`UserID`, `Num_Of_Books_Borrowed`)\n"
-    . "VALUES('". $UserID ."', 0)";
-	
+		else if (strcmp($formUserType, "Librarian") == 0)
+		{
+			$sql2 = "INSERT INTO `librarian`(`UserID`, Date_Hired, Password)\n"
+    . "VALUES('". $UserID ."', '". $Date_Registered. "', '". $password ."')";
+		}
 		
 		if (!mysqli_query($con,$sql)){
 			die('Error: ' . mysqli_error($con));
@@ -50,7 +48,7 @@
 		mysqli_close($con);
 		?>
 	
-		<h1><p><font size="7" color="#ffffff">New User Added</font></p></h1>
+		<h1><p><font size="7" color="#ffffff">New $formUserType Added</font></p></h1>
 		<a class="button" href="admin.php">Back</a>
 	</body>
 </html>

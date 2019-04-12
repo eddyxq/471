@@ -13,6 +13,7 @@
 		if(isset($_GET['job'])){
 			if (($_GET['job']) == "update"){
 				$UserID = $_POST["UserID"];
+				$password = $_POST["Password"];
 				$First_Name = $_POST["First_Name"];
 				$Middle_Name = $_POST["Middle_Name"];
 				$Last_Name = $_POST["Last_Name"];
@@ -39,13 +40,14 @@
 			}
 		}
 
-		$result = mysqli_query($con,"SELECT * FROM user");
+		$result = mysqli_query($con,"SELECT * FROM user, member WHERE member.UserID = user.UserID");
 
 		echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
 
-		echo "<table border='1'>
-		<tr>
+		echo "<table border='1' BORDERCOLOR='#0000FF'>
+		<tr style='background-color:#008FFF'>
 		<th>User ID</th>
+		<th>Password</th>
 		<th>First Name</th>
 		<th>Middle Name</th>
 		<th>Last Name</th>
@@ -53,11 +55,13 @@
 		<th>City</th>
 		<th>Country</th>
 		<th>Phone Number</th>
+		<th colspan='2'>Modify</th>
 		</tr>";
 
 		while($row = mysqli_fetch_array($result)){
-			echo "<tr>";
+			echo '<tr style="background-color:#ffff99">';
 			echo "<td>" . $row['UserID'] . "</td>";
+			echo "<td>" . $row['Password'] . "</td>";
 			echo "<td>" . $row['First_Name'] . "</td>";
 			echo "<td>" . $row['Middle_Name'] . "</td>";
 			echo "<td>" . $row['Last_Name'] . "</td>";
@@ -66,7 +70,7 @@
 			echo "<td>" . $row['Country'] . "</td>";
 			echo "<td>" . $row['Phone_Number'] . "</td>";
 			echo "<td><a href='adminUpdateUser.php?&amp;UserID= " . $row['UserID'] . "'>Update</a></td>";
-			echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='adminViewUser.php?job=delete&amp;UserID= " . $row['UserID'] . "'>DELETE</a></td>";
+			echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='adminViewUser.php?job=delete&amp;UserID= " . $row['UserID'] . "'>Delete</a></td>";
 			echo "</tr>";
 		}
 

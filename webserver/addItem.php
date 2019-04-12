@@ -4,9 +4,9 @@
 		<center>
 			<?php
 
-			$Item_ID = $_POST["Item_ID"];
-			$Item_Type = $_POST["Item_Type"];
-			$Item_Location = $_POST["Item_Location"];
+			$Item_ID = $_GET["Item_ID"];
+			$Item_Type = $_GET["Item_Type"];
+			$Item_Location = $_GET["Item_Location"];
 
 			echo $Item_ID. "<br>". $Item_Type. "<br>". $Item_Location. "<br>";
 
@@ -25,12 +25,11 @@
 			  {
 			  die('Error: ' . mysqli_error($con));
 			  }
-			  
-			echo "1 record added";
 
 			mysqli_close($con);
 			?>
 			
+			<h1><p><font size="7" color="#ffffff">1 Item has been added</font></p></h1> 
 			<form action="librarian.php" method="post">
 				<input type="submit" value="back">
 			</form>

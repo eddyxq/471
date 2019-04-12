@@ -54,38 +54,48 @@
 	  padding: 50px 1000px 300px 50px;
 	}
 	</style>
-	<body>
-		<div>
-		
-		
-			<form action="addingUser.php" method="GET">
-			   <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
-			   <font size="4" color="#ffffff">Password</font><input type="text" name="password"><br>
-			   <font size="4" color="#ffffff">First Name</font><input type="text" name="first_name"><br>
-			   <font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
-			   <font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name"><br>
-			   <font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name"><br>
-			   <font size="4" color="#ffffff">City</font><input type="text" name="city"><br>
-			   <font size="4" color="#ffffff">Country</font><input type="text" name="country"><br>
-			   <font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number"><br>
-			   <font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered"><br>
-			   
-			   
-				<p><font size = "4" color = "#ffffff">User Type: </font>
-				<select name="formUserType">
-				<option value="">Select...</option>
-				<option value="Member">Member</option>
-				  <option value="Librarian">Librarian</option>
-				</select>
-				</p>
+		<body>
+			<center>
+			<?php
+
+			$UserID = $_POST["UserID"];
+
+			echo $UserID. "<br>";
+
+			// Create connection
+			$con=mysqli_connect("localhost","root","","lms");
+
+			// Check connection
+			if (mysqli_connect_errno($con))
+			  {
+			  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+			  }
+			  
+			$result = mysqli_query($con, "SELECT * from user where UserID=". $UserID);
+			 
+	
+			  
+			echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
+
+			echo "<table border='1'>
+			<tr>
+			<th>User ID</th>
+			<th>Number of books borrowed</th>
+			</tr>";
 				
-				 <input type="submit" value="Add">
-			</form>
+			echo "<tr>";
+			echo "<td>" . $UserID . "</td>";
+			echo "<td>" . 'Num_Of_Books_Borrowed' . "</td>";
+			  
+			echo "1 record found";
+
+			mysqli_close($con);
+			?>
 			
-			<form action="admin.php">
-				<input type="submit" value="Return">
+			<form action="librarian.php" method="post">
+				<input type="submit" value="back">
 			</form>
-			
-		</div>
+		</center>
 	</body>
+</html>
 </html>

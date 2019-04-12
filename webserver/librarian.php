@@ -6,8 +6,8 @@
 	  
 				<h1><p><font size="7" color="#ffffff">Welcome Back Librarian</font></p></h1>
 
-				<a class="button" href="underconstruction.php">Search Book</a>
-				<a class="button" href="underconstruction.php">Search Member</a>
+				<a class="button" href="searchBookByISBN.php">Search Book</a>
+				<a class="button" href="searchUserByID.php">Search Member</a>
 				<a class="button" href="lendbook.php">Lend Book</a>
 				<a class="button" href="returnbook.php">Return Book</a>
 				<a class="button" href="searchBorrowedBooks.php">Search Borrowed Books Quantity</a>
