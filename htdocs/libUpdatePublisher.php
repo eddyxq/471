@@ -1,6 +1,6 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="main.css">
-		<style>
+	<style>
 	input[type=text], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -55,15 +55,37 @@
 	}
 	</style>
 	<body>
-		<div>
-			<form action="searchUser_admin.php" method="post">
-			   <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
-			   <input type="submit" value="Search">
-			</form>
-			
-			<form action="admin.php" method="post">
-				<input type="submit" value="Return">
-			</form>
-		</div>
+<div>
+
+<?php
+
+$ID = $_GET["ID"];
+
+// Create connection
+$con=mysqli_connect("localhost","root","","lms");
+
+// Check connection
+if (mysqli_connect_errno($con)){
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+  
+$result = mysqli_query($con,"SELECT * FROM publisher WHERE ID= ".$ID."");
+
+while($row = mysqli_fetch_array($result)){
+ 
+?>
+	<form action="libViewPublisher.php?job=update" method="post">
+		<font size="4" color="#ffffff">ID<input type="number" name="ID" value='<?php echo $row['ID'];?>'><br>
+		<font size="4" color="#ffffff">Name <input type="text" name="Name" value='<?php echo $row['Name'];?>'><br>
+		<font size="4" color="#ffffff">Location<input type="text" name="Location" value='<?php echo $row['Location'];?>'><br>
+		<input type="submit" value="Update">
+	</form>
+<?php
+}
+
+mysqli_close($con);
+
+?>
+</div>
 	</body>
 </html>

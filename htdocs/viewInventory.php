@@ -44,7 +44,7 @@
 				echo "<td>" . $row['Item_ID'] . "</td>";
 				echo "<td>" . $row['Item_Type'] . "</td>";
 				echo "<td>" . $row['Item_Location'] . "</td>";
-				echo "<td><a href='updateItem.php?Item_ID= " . $row['Item_ID'] . "'>Update</a></td>";
+				echo "<td><a href='updateItem.php?Item_ID= " . $row['Item_ID'] ."&amp;Item_Type= " . $row['Item_Type']. "'>Update</a></td>";
 				echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='viewInventory.php?job=delete&amp;Item_ID= " . $row['Item_ID'] . "'>Delete</a></td>";
 
 				echo "</tr>";

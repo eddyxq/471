@@ -1,6 +1,6 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="main.css">
-		<style>
+	<style>
 	input[type=text], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -11,6 +11,16 @@
 	  box-sizing: border-box;
 	}
 
+	input[type=number], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+	
 	input[type=submit] {
 	 width: 500px;
 		display: inline-block;
@@ -56,12 +66,14 @@
 	</style>
 	<body>
 		<div>
-			<form action="searchUser_admin.php" method="post">
-			   <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
-			   <input type="submit" value="Search">
+			<form action="addingPublisher.php" method="GET">
+				<font size="4" color="#ffffff">Name</font><input type="text" name="Name"><br>
+				<font size="4" color="#ffffff">ID</font><input type="number" name="ID"><br>
+				<font size="4" color="#ffffff">Location</font><input type="text" name="Location"><br>
+				<input type="submit" value="Add">
 			</form>
 			
-			<form action="admin.php" method="post">
+			<form action="librarian.php">
 				<input type="submit" value="Return">
 			</form>
 		</div>

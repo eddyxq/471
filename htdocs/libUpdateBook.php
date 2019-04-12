@@ -1,6 +1,6 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="main.css">
-		<style>
+	<style>
 	input[type=text], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -55,15 +55,43 @@
 	}
 	</style>
 	<body>
-		<div>
-			<form action="searchUser_admin.php" method="post">
-			   <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
-			   <input type="submit" value="Search">
-			</form>
-			
-			<form action="admin.php" method="post">
-				<input type="submit" value="Return">
-			</form>
-		</div>
+<div>
+
+<?php
+
+$ISBN = $_GET["ISBN"];
+
+// Create connection
+$con=mysqli_connect("localhost","root","","lms");
+
+// Check connection
+if (mysqli_connect_errno($con)){
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+  
+$result = mysqli_query($con,"SELECT * FROM book WHERE ISBN= ".$ISBN." ");
+
+while($row = mysqli_fetch_array($result)){
+ 
+?>
+	<form action="searchBook.php?job=update" method="post">
+		<font size="4" color="#ffffff">ISBN: <input type="text" name="ISBN" value='<?php echo $row['ISBN'];?>'><br>
+		<font size="4" color="#ffffff">Item_ID: <input type="number" name="Item_ID" value='<?php echo $row['Item_ID'];?>'><br>
+		<font size="4" color="#ffffff">Title <input type="text" name="Title" value='<?php echo $row['Title'];?>'><br>
+		<font size="4" color="#ffffff">Edition: <input type="number" name="Edition" value='<?php echo $row['Edition'];?>'><br>
+		<font size="4" color="#ffffff">Language: <input type="text" name="Language" value='<?php echo $row['Language'];?>'><br>
+		<font size="4" color="#ffffff">Publisher_Name: <input type="text" name="Publisher_Name" value='<?php echo $row['Publisher_Name'];?>'><br>
+		<font size="4" color="#ffffff">Publisher_ID: <input type="number" name="Publisher_ID" value='<?php echo $row['Publisher_ID'];?>'><br>
+		<font size="4" color="#ffffff">Publish_Date: <input type="date" name="Publish_Date" value='<?php echo $row['Publish_Date'];?>'><br>
+		<font size="4" color="#ffffff">Lendable: <input type="boolean" name="Lendable" value='<?php echo $row['Lendable'];?>'><br>
+		<input type="submit" value="Update">
+	</form>
+<?php
+}
+
+mysqli_close($con);
+
+?>
+</div>
 	</body>
 </html>
