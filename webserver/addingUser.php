@@ -9,8 +9,6 @@
 		$city = $_POST["city"];
 		$country = $_POST["country"];
 		$phone_number = $_POST["phone_number"];
-
-		
 		/*
 		echo $first_name. "<br>".
 		$middle_name. "<br>".
