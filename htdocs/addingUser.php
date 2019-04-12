@@ -1,5 +1,6 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	
 	<body>
 		<?php
 		$UserID = $_GET["UserID"];
@@ -38,17 +39,21 @@
 		}
 		
 		if (!mysqli_query($con,$sql)){
-			die('Error: ' . mysqli_error($con));
+			echo "<div style ='font-size:30px;color:#ffffff'>Sorry, this user ID is taken.</div>";
 		}
 		
-		if (!mysqli_query($con,$sql2)){
-			die('Error: ' . mysqli_error($con));
+		else if (!mysqli_query($con,$sql2)){
+			echo "<div style ='font-size:30px;color:#ffffff'> Sorry, this user ID is taken.</div>";
+		}
+		
+		else
+		{
+			echo "<div style ='font-size:30px;color:#ffffff'> New User Added.</div>";
 		}
 
 		mysqli_close($con);
 		?>
-	
-		<h1><p><font size="7" color="#ffffff">New User Added</font></p></h1>
+		
 		<a class="button" href="admin.php">Back</a>
 	</body>
 </html>

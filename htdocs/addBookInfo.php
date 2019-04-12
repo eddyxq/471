@@ -1,7 +1,6 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<body>
-		<style>
+	<style>
 	input[type=text], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -55,41 +54,25 @@
 	  padding: 50px 1000px 300px 50px;
 	}
 	</style>
-
-			<?php
-
-			$Item_ID = $_GET["Item_ID"];
-			$Item_Type = $_GET["Item_Type"];
-			$Item_Location = $_GET["Item_Location"];
+	<body>
+		<div>
+			<form action="addingBook.php" method="GET">
+				<font size="4" color="#ffffff">ISBN</font><input type="text" name="ISBN"><br>
+				<font size="4" color="#ffffff">Item_ID</font><input type="number" name="Item_ID"><br>
+				<font size="4" color="#ffffff">Title</font><input type="text" name="Title"><br>
+				<font size="4" color="#ffffff">Edition<br></font><input type="number" name="Edition"><br><br>
+				<font size="4" color="#ffffff">Language</font><input type="text" name="Language"><br>
+				<font size="4" color="#ffffff">Publisher_Name</font><input type="text" name="Publisher_Name"><br>
+				<font size="4" color="#ffffff">Publisher_ID</font><input type="number" name="Publisher_ID"><br>
+				<font size="4" color="#ffffff">Publish_Date</font><input type="date" name="Publish_Date"><br>
+				<font size="4" color="#ffffff">Lendable</font><input type="boolean" name="Lendable"><br><br>
+		
+				<input type="submit" value="Add">
+			</form>
 			
-			if((strcmp($Item_Type, "Book") == 0) || (strcmp($Item_Type, "book") == 0))
-			{
-				header('Location: addBookInfo.php');
-			}
-			
-			
-			// Create connection
-			$con=mysqli_connect("localhost","root","","lms");
-
-			// Check connection
-			if (mysqli_connect_errno($con))
-			  {
-			  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-			  }
-			  
-			  $sql = "INSERT INTO inventory (Item_ID, Item_Type, Item_Location) VALUES ('". $Item_ID."','". $Item_Type ."','". $Item_Location ."')";
-			 
-			 if (!mysqli_query($con,$sql))
-			  {
-			  die('Error: ' . mysqli_error($con));
-			  }
-
-			mysqli_close($con);
-			?>
-			
-			<h1><p><font size="7" color="#ffffff">1 Item has been added</font></p></h1> 
-			<form action="librarian.php" method="post">
+			<form action="librarian.php">
 				<input type="submit" value="Return">
 			</form>
+		</div>
 	</body>
 </html>
