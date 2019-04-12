@@ -64,7 +64,6 @@ while($row = mysqli_fetch_array($result)){
 	echo "<td>" . $row['Borrow_Duration'] . "</td>";
 	echo "<td><a href='update_borrows.php?ID= " . $row['UserID'] . "'>Return Book</a></td>";
 	echo "<td><a onClick= \"return confirm('Do you want to delete this entry?')\" href='returnbook.php?job=delete&amp;UserID= " . $row['UserID'] . "'>Delete</a></td>";
-
 	echo "</tr>";
 }
 

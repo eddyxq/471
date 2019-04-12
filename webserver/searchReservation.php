@@ -4,7 +4,7 @@
 	<body>
 		<?php
 		
-		$UserID = $_POST["UserID"];
+		$UserID = $_GET["UserID"];
 		// Create connection
 		$con=mysqli_connect("localhost","root","","lms");
 
@@ -24,11 +24,12 @@
 									. "WHERE\n"
 									. "    member.UserID = ".$UserID." AND member.UserID = borrows.UserID AND borrows.Date_Returned = 00-00-0000\n"
 									. "GROUP BY\n"
-									. "    member.UserID\n"
+									. "    UserID\n"
 									. "HAVING\n"
 									. "    Numb_Of_Books_Borrowed > 0");
 
 		echo '<style type="text/css">'.file_get_contents('main.css').'</style>';
+
 		echo "<table border='1'>
 		<tr>
 		<th>User ID</th>
@@ -36,7 +37,7 @@
 		<th>Num_Of_Books_Borrowed</th>
 		</tr>";
 
-		$row = mysqli_fetch_array($result);
+		while($row = mysqli_fetch_array($result)){
 			echo "<tr>";
 			echo "<td>" . $row['UserID'] . "</td>";
 			echo "<td>" . $row['First_Name'] . "</td>";
@@ -44,12 +45,12 @@
 			//echo "<td><a href='adminUpdateUser.php?UserID= " . $row['UserID'] . "'>Update</a></td>";
 			//echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='adminViewUser.php?job=delete&amp;UserID= " . $row['UserID'] . "'>DELETE</a></td>";
 			echo "</tr>";
-
+		}
 
 		echo "</table>";
 
 		mysqli_close($con);
 		?>
-		<a class="button" href="librarian.php">Back</a>
+		<a class="button" href="member.php">Back</a>
 	</body>
 </html>

@@ -1,10 +1,10 @@
 <?php
 
-$UserID = $_GET["UserID"];
-$ISBN = $_GET["ISBN"];
-$Date_Borrowed = $_GET["Date_Borrowed"];
-$Date_Returned = $_GET["Date_Returned"];
-$Borrow_Duration = $_GET["Borrow_Duration"];
+$UserID = $_POST["UserID"];
+$ISBN = $_POST["ISBN"];
+$Date_Borrowed = $_POST["Date_Borrowed"];
+$Date_Returned = $_POST["Date_Returned"];
+$Borrow_Duration = $_POST["Borrow_Duration"];
 
 // Create connection
 $con=mysqli_connect("localhost","root","","lms");
@@ -30,7 +30,7 @@ while($row = mysqli_fetch_array($result)){
 	</form>
 
 	<form action="returnbook.php" method="post">
-		<input type="submit" value="back">
+		<input type="submit" value="Back">
 	</form>
   
 <?php

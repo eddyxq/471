@@ -30,3 +30,12 @@ echo "1 book has been lent";
 mysqli_close($con);
 ?>
 
+<html>
+	<body>
+		<div>
+			<form action="librarian.php" method="post">
+				<input type="submit" value="Back">
+			</form>
+		</div>
+	</body>
+</html>
