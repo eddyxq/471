@@ -56,36 +56,33 @@
 	</style>
 	<body>
 		<div>
-		
-		
 			<form action="addingUser.php" method="GET">
-			   <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
-			   <font size="4" color="#ffffff">Password</font><input type="text" name="password"><br>
-			   <font size="4" color="#ffffff">First Name</font><input type="text" name="first_name"><br>
-			   <font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
-			   <font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name"><br>
-			   <font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name"><br>
-			   <font size="4" color="#ffffff">City</font><input type="text" name="city"><br>
-			   <font size="4" color="#ffffff">Country</font><input type="text" name="country"><br>
-			   <font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number"><br>
-			   <font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered"><br>
+				<font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
+				<font size="4" color="#ffffff">Password</font><input type="text" name="password"><br>
+				<font size="4" color="#ffffff">First Name</font><input type="text" name="first_name"><br>
+				<font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
+				<font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name"><br>
+				<font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name"><br>
+				<font size="4" color="#ffffff">City</font><input type="text" name="city"><br>
+				<font size="4" color="#ffffff">Country</font><input type="text" name="country"><br>
+				<font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number"><br>
+				<font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered"><br>
 			   
-			   
-				<p><font size = "4" color = "#ffffff">User Type: </font>
+				<p>
+				<font size = "4" color = "#ffffff">User Type: </font>
 				<select name="formUserType">
 				<option value="">Select...</option>
 				<option value="Member">Member</option>
-				  <option value="Librarian">Librarian</option>
+				<option value="Librarian">Librarian</option>
 				</select>
 				</p>
 				
-				 <input type="submit" value="Add">
+				<input type="submit" value="Add">
 			</form>
 			
 			<form action="admin.php">
 				<input type="submit" value="Return">
 			</form>
-			
 		</div>
 	</body>
 </html>

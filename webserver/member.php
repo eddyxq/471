@@ -9,7 +9,7 @@
 				<a class="button" href="memberSearchBookByISBN.php">Search Book</a>
 				<a class="button" href="reserveRoom.php">Reserve Study Room</a>
 				<a class="button" href="viewReservationMember.php">View Reservations</a>
-				<a class="button" href="underconstruction.php">Remove Reservation</a>
+				<!--<a class="button" href="underconstruction.php">Cancel Reservation</a>-->
 				<a class="buttonlogout" href="index.php">Logout</a>
 
 			</div>
