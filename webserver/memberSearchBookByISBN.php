@@ -56,12 +56,13 @@
 	</style>
 	<body>
 		<div>
-			<form action="searchBook.php" method="post">
+
+			<form action="memberSearchBook.php" method="post">
 			   <font size="4" color="#ffffff">Book ISBN</font><input type="text" name="ISBN"><br>
 			   <input type="submit" value="Search">
 			</form>
 			
-			<form action="librarian.php" method="post">
+			<form action="member.php" method="post">
 				<input type="submit" value="Return">
 			</form>
 		</div>

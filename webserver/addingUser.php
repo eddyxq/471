@@ -48,7 +48,7 @@
 		mysqli_close($con);
 		?>
 	
-		<h1><p><font size="7" color="#ffffff">New $formUserType Added</font></p></h1>
+		<h1><p><font size="7" color="#ffffff">New User Added</font></p></h1>
 		<a class="button" href="admin.php">Back</a>
 	</body>
 </html>

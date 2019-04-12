@@ -25,12 +25,14 @@ if (mysqli_connect_errno($con))
   $sql2 = "INSERT INTO reserves (UserID, Room_Number) VALUES ('". $UserID."','". $Room_Number ."')";
   mysqli_query($con, $sql2);
   
+
  if (!mysqli_query($con,$sql))
   {
-   die('Error: ' . mysqli_error($con));
+   echo('Sorry, this room is already booked.');
   }
-
-echo "1 record added";
+  else {
+    echo "Reservation successful";
+	}
 
 mysqli_close($con);
 ?>
