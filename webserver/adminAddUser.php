@@ -10,6 +10,7 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
+
 	input[type=submit] {
 	 width: 500px;
 		display: inline-block;
@@ -30,6 +31,7 @@
 		color: #ffffff;
 		text-decoration: none;
 	}
+
 	input[type=submit]:hover,
 	input[type=submit]:focus {
 		border: 1px solid ##a48d88;
@@ -46,6 +48,7 @@
 		background: -moz-linear-gradient(top, #225594, #225594);
 		background: linear-gradient(to bottom, #225594, #225594);
 	}
+
 	div {
 	  border-radius: 50px;
 	  padding: 50px 1000px 300px 50px;
@@ -53,7 +56,10 @@
 	</style>
 	<body>
 		<div>
-			<form action="addingUser.php" method="post">
+		
+		
+			<form action="addingUser.php" method="GET">
+			 <font size="4" color="#ffffff">User ID</font><input type="text" name="UserID"><br>
 			   <font size="4" color="#ffffff">First Name</font><input type="text" name="first_name"><br>
 			   <font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
 			   <font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name"><br>
@@ -61,7 +67,18 @@
 			   <font size="4" color="#ffffff">City</font><input type="text" name="city"><br>
 			   <font size="4" color="#ffffff">Country</font><input type="text" name="country"><br>
 			   <font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number"><br>
-			   <input type="submit" value="Add">
+			   
+			   
+				<p>
+				User Type:
+				<select name="formUserType">
+				<option value="">Select...</option>
+				<option value="member">Member</option>
+				  <option value="Librarian">Librarian</option>
+				</select>
+				</p>
+				
+				 <input type="submit" value="add">
 			</form>
 			
 			<form action="admin.php">

@@ -65,7 +65,7 @@
 			echo "<td>" . $row['City'] . "</td>";
 			echo "<td>" . $row['Country'] . "</td>";
 			echo "<td>" . $row['Phone_Number'] . "</td>";
-			echo "<td><a href='adminUpdateUser.php?UserID= " . $row['UserID'] . "'>Update</a></td>";
+			echo "<td><a href='adminUpdateUser.php?&amp;UserID= " . $row['UserID'] . "'>Update</a></td>";
 			echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='adminViewUser.php?job=delete&amp;UserID= " . $row['UserID'] . "'>DELETE</a></td>";
 			echo "</tr>";
 		}
@@ -77,4 +77,5 @@
 		<a class="button" href="admin.php">Back</a>
 	</body>
 </html>
+
 
