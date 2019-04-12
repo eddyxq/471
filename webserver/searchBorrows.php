@@ -7,7 +7,6 @@
 		$UserID = $_POST["UserID"];
 		// Create connection
 		$con=mysqli_connect("localhost","root","","lms");
-
 		// Check connection
 		if (mysqli_connect_errno($con)){
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -16,15 +15,15 @@
 		$result = mysqli_query($con, "SELECT\n"
 									. "    member.UserID,\n"
 									. "    user.First_Name,\n"
-									. "    COUNT(*) AS Numb_Of_Books_Borrowed\n"
+									. "    COUNT(borrows.UserID) AS Numb_Of_Books_Borrowed\n"
 									. "FROM\n"
 									. "    `user`,\n"
 									. "    `member`,\n"
 									. "    `borrows`\n"
 									. "WHERE\n"
-									. "    member.UserID = ".$UserID." AND member.UserID = borrows.UserID AND borrows.Date_Returned = 00-00-0000\n"
+									. "    borrows.UserID = ".$UserID." AND member.UserID = borrows.UserID AND member.UserID = user.UserID AND (borrows.Date_Returned = 00-00-0000 OR borrows.Date_Returned IS NULL)\n"
 									. "GROUP BY\n"
-									. "    member.UserID\n"
+									. "    borrows.UserID\n"
 									. "HAVING\n"
 									. "    Numb_Of_Books_Borrowed > 0");
 
