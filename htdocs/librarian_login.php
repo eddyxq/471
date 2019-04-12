@@ -10,7 +10,15 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
-
+	input[type=password], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
 	input[type=submit] {
 	 width: 500px;
 		display: inline-block;
@@ -58,7 +66,7 @@
 		<div>
 			<h1><p><font size="7" color="#ffffff">Log In as Librarian</font></p></h1>
 			<font size="4" color="#ffffff">Username</font><input type="text" name ="Username"><br>
-			<font size="4" color="#ffffff">Password</font><input type="text" name ="Password"><br>
+			<font size="4" color="#ffffff">Password</font><input type="password" name ="Password"><br>
 			<a class="button" href="authenticate_librarian.php">Log In</a>
 			<a class="buttonlogout" href="index.php">Back To Main Menu</a>
 		</div>
