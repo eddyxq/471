@@ -1,6 +1,7 @@
 
 <?php
 
+$UserID = $_POST["UserID"];
 $Room_Number = $_POST["Room_Number"];
 $Date_Booked = $_POST["Date_Booked"];
 $Time_Booked = $_POST["Time_Booked"];
@@ -20,6 +21,10 @@ if (mysqli_connect_errno($con))
   
   $sql = "INSERT INTO booked (Room_Number, Date_Booked, Time_Booked, Booking_Duration) 
   VALUES ('". $Room_Number."','". $Date_Booked ."','". $Time_Booked ."','". $Booking_Duration ."')";
+  
+  $sql2 = "INSERT INTO reserves (UserID, Room_Number) VALUES ('". $UserID."','". $Room_Number ."')";
+  mysqli_query($con, $sql2);
+  
  if (!mysqli_query($con,$sql))
   {
    die('Error: ' . mysqli_error($con));

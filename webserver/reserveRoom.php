@@ -3,6 +3,7 @@
 	<body>
 		<div>
 			<form action="reserveStudyRoom.php" method="post">	
+				<font size="4" color="#ffffff">UserID</font><input type="number" name ="UserID"><br>
 			   <font size="4" color="#ffffff">Room_Number</font><input type="text" name ="Room_Number"><br>
 			   <font size="4" color="#ffffff">Date_Booked</font><input type="date" name="Date_Booked"><br>
 			   <font size="4" color="#ffffff">Time_Booked</font><input type="time" name="Time_Booked"><br>

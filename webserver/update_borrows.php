@@ -14,7 +14,7 @@ if (mysqli_connect_errno($con)){
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
   
-$result = mysqli_query($con,"SELECT * FROM borrows where UserID=".$UserID);
+$result = mysqli_query($con,"SELECT * FROM borrows where UserID='$UserID'");
 
 while($row = mysqli_fetch_array($result)){
  
