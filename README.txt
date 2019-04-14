@@ -10,12 +10,15 @@ In order to run this system please do the following
 2. Download the project
 3. Locate the htdocs folder inside the installation files of XAMPP from the local disk
 	where XAMPP is installed
-4. Copy all the prject files directly into the htdocs folder
+4. Copy all the project files directly into the htdocs folder, and the images into the img folder
+	(if they are not already there)
 5. Open XAMPP, and start Apache and MySQL
 6. Go to your preferred browser, and type localhost in the url box
 7. Go to phpmyAdmin and create a database named "lms" and then click import on the top of the page
 	in order to open the lms.sql file that was part of the project folder in order to load the 
-	database.
+	database. For the encoding, make sure to use utf8_general_ci
+	Note: Make sure that the root user for the phpmyadmin account that is being used
+	to access the database has no password and in the field says "".
 8. Once successfully loaded, go to the browser and type localhost in the search bar again and you will
 	be redirected to the system to log in!
 	Credentials for sample users
