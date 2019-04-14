@@ -10,6 +10,17 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
+	
+	  input[type=number], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+
 
 	input[type=submit] {
 	 width: 500px;
@@ -55,35 +66,37 @@
 	}
 	</style>
 	<body>
-		<div>
-			<form action="addingUser.php" method="GET">
-				
-				<font size="4" color="#ffffff">User ID</font><input type="text" name="UserID" required><br>
-				<font size="4" color="#ffffff">Password</font><input type="text" name="password" required><br>
-				<font size="4" color="#ffffff">First Name</font><input type="text" name="first_name" required><br>
-				<font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
-				<font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name" required><br>
-				<font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name" required><br>
-				<font size="4" color="#ffffff">City</font><input type="text" name="city" required><br>
-				<font size="4" color="#ffffff">Country</font><input type="text" name="country" required><br>
-				<font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number" required><br>
-				<font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered" required><br>
-			   
-				<p>
-				<font size = "4" color = "#ffffff">User Type: </font>
-				<select required name="formUserType">
-				<option value="">Select...</option>
-				<option value="Member">Member</option>
-				<option value="Librarian">Librarian</option>
-				</select>
-				</p>
-				
-				<input type="submit" value="Add">
-			</form>
-			
-			<form action="admin.php">
-				<input type="submit" value="Return">
-			</form>
-		</div>
+<div>
+
+<?php
+
+$UserID = $_GET["UserID"];
+
+// Create connection
+$con=mysqli_connect("localhost","root","","lms");
+
+// Check connection
+if (mysqli_connect_errno($con)){
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+  
+$result = mysqli_query($con,"SELECT * FROM fees WHERE UserID= ".$UserID." ");
+
+while($row = mysqli_fetch_array($result)){
+ 
+?>
+	<form action="searchUser.php?job=update" method="post">
+		<font size="4" color="#ffffff">Type: <input type="text" name="Type" value='<?php echo $row['Type'];?>'><br>
+		<font size="4" color="#ffffff">Amount: <input type="number" name="Amount" value='<?php echo $row['Amount'];?>'><br>
+		<input type="hidden" name="UserID" value='<?php echo $row['UserID'];?>'><br>
+		<input type="submit" value="Update">
+	</form>
+<?php
+}
+
+mysqli_close($con);
+
+?>
+</div>
 	</body>
 </html>

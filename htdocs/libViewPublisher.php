@@ -17,7 +17,7 @@
 				$Location = $_POST["Location"];
 				$result = mysqli_query($con,"update publisher set 
 				Name='".$Name. "', 
-				Location='".$Location. "', 
+				Location='".$Location. "' 
 				where ID=". $ID);
 			}
 		} 

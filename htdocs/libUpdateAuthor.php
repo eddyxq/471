@@ -55,35 +55,43 @@
 	}
 	</style>
 	<body>
-		<div>
-			<form action="addingUser.php" method="GET">
-				
-				<font size="4" color="#ffffff">User ID</font><input type="text" name="UserID" required><br>
-				<font size="4" color="#ffffff">Password</font><input type="text" name="password" required><br>
-				<font size="4" color="#ffffff">First Name</font><input type="text" name="first_name" required><br>
-				<font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
-				<font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name" required><br>
-				<font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name" required><br>
-				<font size="4" color="#ffffff">City</font><input type="text" name="city" required><br>
-				<font size="4" color="#ffffff">Country</font><input type="text" name="country" required><br>
-				<font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number" required><br>
-				<font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered" required><br>
-			   
-				<p>
-				<font size = "4" color = "#ffffff">User Type: </font>
-				<select required name="formUserType">
-				<option value="">Select...</option>
-				<option value="Member">Member</option>
-				<option value="Librarian">Librarian</option>
-				</select>
-				</p>
-				
-				<input type="submit" value="Add">
-			</form>
-			
-			<form action="admin.php">
-				<input type="submit" value="Return">
-			</form>
-		</div>
+<div>
+
+<?php
+
+$First_Name = $_GET["First_Name"];
+
+// Create connection
+$con=mysqli_connect("localhost","root","","lms");
+
+// Check connection
+if (mysqli_connect_errno($con)){
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+  
+$result = mysqli_query($con,"SELECT * FROM user, member WHERE user.UserID= ".$UserID." AND user.UserID = member.UserID");
+
+while($row = mysqli_fetch_array($result)){
+ 
+?>
+	<form action="libViewAuthor.php?job=update" method="post">
+		<input type="hidden" name="UserID" value='<?php echo $row['UserID'];?>'><br>
+		<input type="hidden" name="Password" value='<?php echo $row['Password'];?>'><br>
+		<font size="4" color="#ffffff">First Name: <input type="text" name="First_Name" value='<?php echo $row['First_Name'];?>'><br>
+		<font size="4" color="#ffffff">Middle_Name: <input type="text" name="Middle_Name" value='<?php echo $row['Middle_Name'];?>'><br>
+		<font size="4" color="#ffffff">Last_Name: <input type="text" name="Last_Name" value='<?php echo $row['Last_Name'];?>'><br>
+		<font size="4" color="#ffffff">Street_Name: <input type="text" name="Street_Name" value='<?php echo $row['Street_Name'];?>'><br>
+		<font size="4" color="#ffffff">City: <input type="text" name="City" value='<?php echo $row['City'];?>'><br>
+		<font size="4" color="#ffffff">Country: <input type="text" name="Country" value='<?php echo $row['Country'];?>'><br>
+		<font size="4" color="#ffffff">Phone_Number: <input type="text" name="Phone_Number" value='<?php echo $row['Phone_Number'];?>'><br>
+		<input type="submit" value="Update">
+	</form>
+<?php
+}
+
+mysqli_close($con);
+
+?>
+</div>
 	</body>
 </html>

@@ -23,13 +23,17 @@
 			 
 			 if (!mysqli_query($con,$sql))
 			  {
-			  die('Error: ' . mysqli_error($con));
+				echo "<div style ='font-size:30px;color:#ffffff'>Sorry, the user ID or book ISBN are incorrect.</div>";
 			  }
 			  
+			  else
+			  {
+				echo "<div style ='font-size:30px;color:#ffffff'>1 Book has been lent.</div>";
+			  }
 			mysqli_close($con);
 			?>
 
-			<h1><p><font size="7" color="#ffffff">1 Book has been lent</font></p></h1>
+	
 			<a class="button" href="librarian.php">Back</a>
 		</div>
 	</body>

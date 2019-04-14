@@ -75,8 +75,8 @@ while($row = mysqli_fetch_array($result)){
  
 ?>
 	<form action="adminViewUser.php?job=update" method="post">
-		<font size="4" color="#ffffff">UserID: <input type="text" name="UserID" value='<?php echo $row['UserID'];?>'><br>
-		<font size="4" color="#ffffff">Password: <input type="text" name="Password" value='<?php echo $row['Password'];?>'><br>
+		<input type="hidden" name="UserID" value='<?php echo $row['UserID'];?>'><br>
+		<input type="hidden" name="Password" value='<?php echo $row['Password'];?>'><br>
 		<font size="4" color="#ffffff">First Name: <input type="text" name="First_Name" value='<?php echo $row['First_Name'];?>'><br>
 		<font size="4" color="#ffffff">Middle_Name: <input type="text" name="Middle_Name" value='<?php echo $row['Middle_Name'];?>'><br>
 		<font size="4" color="#ffffff">Last_Name: <input type="text" name="Last_Name" value='<?php echo $row['Last_Name'];?>'><br>

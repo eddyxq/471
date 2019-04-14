@@ -10,6 +10,16 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
+	
+		input[type=date], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
 
 	input[type=submit] {
 	 width: 500px;
@@ -56,32 +66,19 @@
 	</style>
 	<body>
 		<div>
-			<form action="addingUser.php" method="GET">
-				
-				<font size="4" color="#ffffff">User ID</font><input type="text" name="UserID" required><br>
-				<font size="4" color="#ffffff">Password</font><input type="text" name="password" required><br>
+			<form action="addingAuthor.php" method="GET">
 				<font size="4" color="#ffffff">First Name</font><input type="text" name="first_name" required><br>
 				<font size="4" color="#ffffff">Middle Name</font><input type="text" name="middle_name"><br>
 				<font size="4" color="#ffffff">Last Name</font><input type="text" name="last_name" required><br>
-				<font size="4" color="#ffffff">Street Name</font><input type="text" name="street_name" required><br>
-				<font size="4" color="#ffffff">City</font><input type="text" name="city" required><br>
-				<font size="4" color="#ffffff">Country</font><input type="text" name="country" required><br>
-				<font size="4" color="#ffffff">Phone Number</font><input type="text" name="phone_number" required><br>
-				<font size="4" color="#ffffff">Date_Registered</font><input type="date" name="Date_Registered" required><br>
-			   
-				<p>
-				<font size = "4" color = "#ffffff">User Type: </font>
-				<select required name="formUserType">
-				<option value="">Select...</option>
-				<option value="Member">Member</option>
-				<option value="Librarian">Librarian</option>
-				</select>
-				</p>
+				<font size="4" color="#ffffff">Date_Died</font><input type="date" name="date_died"><br>
+				<font size="4" color="#ffffff">Country of Origin</font><input type="text" name="origin_country" required><br>
+				<font size="4" color="#ffffff">Writing Style</font><input type="text" name="writing_style" required><br>
+	
 				
 				<input type="submit" value="Add">
 			</form>
 			
-			<form action="admin.php">
+			<form action="librarian.php">
 				<input type="submit" value="Return">
 			</form>
 		</div>

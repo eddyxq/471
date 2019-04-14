@@ -16,6 +16,8 @@
 				<a class="button" href="viewInventory.php">Edit Inventory</a>
 				<a class="button" href="libAddPublisher.php">Add Publishers</a>
 				<a class="button" href="libViewPublisher.php">Manage Publishers</a>
+				<a class="button" href="libAddAuthor.php">Add Authors</a>
+				<a class="button" href="libViewAuthor.php">Manage Authors</a>
 				<a class="buttonlogout" href="index.php">Logout</a>
 
 			</div>

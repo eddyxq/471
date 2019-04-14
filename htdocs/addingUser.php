@@ -14,6 +14,7 @@
 		$formUserType = $_GET["formUserType"];
 		$password = $_GET["password"];
 		$Date_Registered = $_GET["Date_Registered"];
+		$FeeType = "General";
 		
 		// Create connection
 		$con=mysqli_connect("localhost","root","","lms");
@@ -26,6 +27,8 @@
 					
 		$sql = "INSERT INTO user (UserID, first_name, middle_name, last_name, street_name, city, country, phone_number) VALUES ('". $UserID ."', '". $first_name."','". $middle_name ."','". $last_name ."','". $street_name ."','". $city ."','". $country ."','". $phone_number ."')";
 		 
+		$sql3 = "INSERT INTO `fees`(`UserID`, Type, Amount) VALUES('". $UserID ."', '". $FeeType ."', 0)";
+		
 		if (strcmp($formUserType, "Member") == 0)
 		{
 		$sql2 = "INSERT INTO `member`(`UserID`, `Num_Of_Books_Borrowed`, Password)\n"
@@ -40,6 +43,10 @@
 		
 		if (!mysqli_query($con,$sql)){
 			echo "<div style ='font-size:30px;color:#ffffff'>Sorry, this user ID is taken.</div>";
+		}
+		
+		else if (!mysqli_query($con,$sql3)){
+			echo "<div style ='font-size:30px;color:#ffffff'> Sorry, this user ID is taken.</div>";
 		}
 		
 		else if (!mysqli_query($con,$sql2)){
