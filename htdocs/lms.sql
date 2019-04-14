@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2019 at 06:52 AM
+-- Generation Time: Apr 12, 2019 at 08:30 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -31,19 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `administrator` (
   `UserID` int(11) NOT NULL,
   `EmployeeID` int(11) NOT NULL,
-  `Date_Hired` date NOT NULL,
-  `Password` varchar(25) NOT NULL
+  `Date_Hired` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `administrator`
---
-
-INSERT INTO `administrator` (`UserID`, `EmployeeID`, `Date_Hired`, `Password`) VALUES
-(4, 1, '2019-04-08', 'pass4'),
-(10, 6, '2019-04-11', 'pass10'),
-(11, 5, '2019-03-20', 'pass11'),
-(12, 4, '2017-07-11', 'pass12');
 
 -- --------------------------------------------------------
 
@@ -60,15 +49,6 @@ CREATE TABLE `author` (
   `Origin_Country` varchar(50) NOT NULL,
   `Writing_Style` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `author`
---
-
-INSERT INTO `author` (`First_Name`, `Middle_Name`, `Last_Name`, `Date_Born`, `Date_Died`, `Origin_Country`, `Writing_Style`) VALUES
-('Bruce', 'S', 'Davie', '1955-03-07', NULL, 'Canada', 'Informational'),
-('Doug', 'A', 'Lowe', '1980-05-25', NULL, 'Australia', 'Informational'),
-('Larry', 'L', 'Peterson', '1958-05-08', NULL, 'United States', 'Informational');
 
 -- --------------------------------------------------------
 
@@ -105,9 +85,6 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`ISBN`, `Item_ID`, `Title`, `Edition`, `Language`, `Publisher_Name`, `Publisher_ID`, `Publish_Date`, `Lendable`) VALUES
-('1111111111111', '2', 'Harry Potter and The Deathly Demos', 2, 'English', 'Pearson', 1, '2019-03-04', 1),
-('978012385091', '4', 'Computer Networks: A System\'s Approach', 8, 'English', 'Emerald Group Publishing', 3, '1997-09-15', 1),
-('9780470179154', '4', 'Networking for Dummies', 4, 'English', 'Macmillan Learning', 4, '2019-04-16', 1),
 ('9999999999999', '1', 'Fundamentals of Database Systems', 7, 'English', 'Pearson', 1, '2019-04-01', 1);
 
 -- --------------------------------------------------------
@@ -122,15 +99,6 @@ CREATE TABLE `booked` (
   `Time_Booked` time NOT NULL,
   `Booking_Duration` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `booked`
---
-
-INSERT INTO `booked` (`Room_Number`, `Date_Booked`, `Time_Booked`, `Booking_Duration`) VALUES
-('101', '2019-04-12', '06:14:00', 1),
-('105', '2019-04-21', '14:16:00', 1),
-('202', '2019-04-27', '18:15:00', 1);
 
 -- --------------------------------------------------------
 
@@ -152,8 +120,7 @@ CREATE TABLE `borrows` (
 
 INSERT INTO `borrows` (`UserID`, `ISBN`, `Date_Borrowed`, `Date_Returned`, `Borrow_Duration`) VALUES
 (1, '9999999999999', '2019-04-12', '0000-00-00', 2),
-(2, '9999999999999', '2019-04-12', '2019-04-15', 4),
-(6, '1111111111111', '2019-04-12', '0000-00-00', 2);
+(2, '9999999999999', '2019-04-12', '0000-00-00', 4);
 
 -- --------------------------------------------------------
 
@@ -195,10 +162,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`Item_ID`, `Item_Type`, `Item_Location`) VALUES
-('1', 'Book', 'main'),
-('2', 'Book', 'SecondFloor'),
-('3', 'Book', 'ThirdFloor'),
-('4', 'Book', 'SecondFloor');
+('1', 'Book', 'FirstFloor');
 
 -- --------------------------------------------------------
 
@@ -230,9 +194,7 @@ CREATE TABLE `librarian` (
 --
 
 INSERT INTO `librarian` (`UserID`, `EmployeeID`, `Date_Hired`, `Password`) VALUES
-(3, 1, '2019-05-12', 'pass'),
-(9, 2, '2019-01-14', 'pass9'),
-(13, 3, '2018-06-04', 'pass1');
+(3, 1, '2019-05-12', 'pass');
 
 -- --------------------------------------------------------
 
@@ -244,16 +206,6 @@ CREATE TABLE `library` (
   `Name` varchar(50) NOT NULL,
   `Location` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `library`
---
-
-INSERT INTO `library` (`Name`, `Location`) VALUES
-('Doucette', 'University of Calgary'),
-('Gallagher', 'University of Calgary'),
-('TFDL', 'University of Calgary'),
-('TITL', 'University of Calgary');
 
 -- --------------------------------------------------------
 
@@ -272,9 +224,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`UserID`, `Num_Of_Books_Borrowed`, `Password`) VALUES
-(1, 0, 'pass1'),
-(2, 0, 'pass2'),
-(6, 0, 'pass6');
+(1, 0, 'pass'),
+(2, 0, 'passTest');
 
 -- --------------------------------------------------------
 
@@ -293,14 +244,7 @@ CREATE TABLE `publisher` (
 --
 
 INSERT INTO `publisher` (`Name`, `ID`, `Location`) VALUES
-('Cengage Learning', 2, 'Boston, United States'),
-('Emerald Group Publishing', 3, 'Bingly, United Kingdom'),
-('Macmillan Learning', 4, 'London, United Kingdom'),
-('McGraw-Hill Education', 5, 'New York, United States'),
-('Pearson', 1, 'Canada'),
-('Routledge Taylor & Francis', 6, 'New York, United States'),
-('Wiley', 7, 'San Francisco, United States'),
-('Wolters Kluwer', 8, 'South Holland, Netherlands');
+('Pearson', 1, 'Canada');
 
 -- --------------------------------------------------------
 
@@ -312,15 +256,6 @@ CREATE TABLE `reserves` (
   `UserID` int(11) NOT NULL,
   `Room_Number` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `reserves`
---
-
-INSERT INTO `reserves` (`UserID`, `Room_Number`) VALUES
-(1, '101'),
-(5, '202'),
-(15, '105');
 
 -- --------------------------------------------------------
 
@@ -340,30 +275,7 @@ CREATE TABLE `study_rooms` (
 
 INSERT INTO `study_rooms` (`Room_Number`, `Capacity`, `Lib_Name`) VALUES
 ('100', 5, 'TFDL'),
-('101', 5, 'TFDL'),
-('102', 5, 'TFDL'),
-('103', 5, 'TFDL'),
-('105', 5, 'TFDL'),
-('106', 5, 'TFDL'),
-('107', 6, 'TFDL'),
-('108', 6, 'TFDL'),
-('109', 6, 'TFDL'),
-('110', 6, 'TFDL'),
-('201', 8, 'TITL'),
-('202', 8, 'TITL'),
-('203', 8, 'TITL'),
-('204', 8, 'TITL'),
-('205', 8, 'TITL'),
-('301', 4, 'Gallagher'),
-('302', 4, 'Gallagher'),
-('303', 4, 'Gallagher'),
-('304', 4, 'Gallagher'),
-('305', 4, 'Gallagher'),
-('401', 12, 'Doucette'),
-('402', 12, 'Doucette'),
-('403', 6, 'Doucette'),
-('404', 4, 'Doucette'),
-('405', 10, 'Doucette');
+('101', 5, 'TFDL');
 
 -- --------------------------------------------------------
 
@@ -387,21 +299,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `First_Name`, `Middle_Name`, `Last_Name`, `Street_Name`, `City`, `Country`, `Phone_Number`) VALUES
-(1, 'Dan', 'M', 'Trump', '135', 'Calgary', 'Canada', '4829119'),
-(2, 'Edward', 'M', 'Macadamia', '1234', 'Calgary', 'Canada', '4829119'),
-(3, 'Narshbla', 'Da', 'librar', '135', 'Calgary', 'Canada', '4829119'),
-(4, 'Kashfia', 'S', 'Sailunaz', 'demo street', 'Calgary', 'Canada', '1234567890'),
-(5, 'Pavol', 'T', 'Federl', 'Rue Sherbrooke', 'Montreal', 'Canada', '4035236666'),
-(6, 'Eddy', 'X', 'Qiang', 'SaddleTowne', 'calgary', 'canada', '4031234567'),
-(7, 'Karim', 'K', 'Beyk', 'Argyle Street', 'Halifax', 'Canada', '5876365555'),
-(8, 'Rogers', 'G', 'Goodman', 'Aspen Meadows', 'Calgary', 'Canada', '5874123456'),
-(9, 'Billy', 'D', 'Richman', 'Abalone Street', 'Calgary', 'Canada', '9856321047'),
-(10, 'Trilok', 'K', 'Patel', 'Cedarwood', 'Calgary', 'Canada', '5874632588'),
-(11, 'Muhammad', 'G', 'Saadan', 'Citadel Pass', 'Calgary', 'Canada', '5874123690'),
-(12, 'Trevor', 'H', 'Boyd', 'Deerside', 'Calgary', 'Canada', '1587412201'),
-(13, 'Shuji', 'J', 'Chen', 'Copperstone', 'Calgary', 'Canada', '5878222077'),
-(14, 'Kim', 'D', 'Jong', 'Coral Shores', 'Calgary', 'Canada', '4032382901'),
-(15, 'Jose', 'O', 'Mourinho', 'Parkridge', 'Calgary', 'Canada', '4032016325');
+(1, 'Donald', 'M', 'Nuts', '135', 'Calgary', 'Canada', '4829119'),
+(2, 'Deez', 'M', 'Nuts', '1234', 'Calgary', 'Canada', '4829119'),
+(3, 'Narshbla', 'Da', 'librar', '135', 'Calgary', 'Canada', '4829119');
 
 -- --------------------------------------------------------
 
@@ -415,15 +315,6 @@ CREATE TABLE `writes` (
   `Author_Lname` varchar(50) NOT NULL,
   `ISBN` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `writes`
---
-
-INSERT INTO `writes` (`Author_Fname`, `Author_Mname`, `Author_Lname`, `ISBN`) VALUES
-('Bruce', 'S', 'Davie', '978012385091'),
-('Doug', 'A', 'Lowe', '9780470179154'),
-('Larry', 'L', 'Peterson', '978012385091');
 
 --
 -- Indexes for dumped tables
@@ -561,13 +452,13 @@ ALTER TABLE `writes`
 -- AUTO_INCREMENT for table `administrator`
 --
 ALTER TABLE `administrator`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `librarian`
 --
 ALTER TABLE `librarian`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -644,12 +535,6 @@ ALTER TABLE `member`
 ALTER TABLE `reserves`
   ADD CONSTRAINT `reserves_ibfk_1` FOREIGN KEY (`Room_Number`) REFERENCES `study_rooms` (`Room_Number`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reserves_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `study_rooms`
---
-ALTER TABLE `study_rooms`
-  ADD CONSTRAINT `study_rooms_ibfk_1` FOREIGN KEY (`Lib_Name`) REFERENCES `library` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `writes`

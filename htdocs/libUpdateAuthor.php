@@ -60,6 +60,8 @@
 <?php
 
 $First_Name = $_GET["First_Name"];
+$Middle_Name = $_GET["Middle_Name"];
+$Last_Name = $_GET["Last_Name"];
 
 // Create connection
 $con=mysqli_connect("localhost","root","","lms");
@@ -69,21 +71,20 @@ if (mysqli_connect_errno($con)){
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
   
-$result = mysqli_query($con,"SELECT * FROM user, member WHERE user.UserID= ".$UserID." AND user.UserID = member.UserID");
+$result = mysqli_query($con,"SELECT * FROM author WHERE First_Name ='".$First_Name."' AND Middle_Name ='".$Middle_Name."' AND Last_Name= '".$Last_Name."'");
+
+
 
 while($row = mysqli_fetch_array($result)){
  
 ?>
 	<form action="libViewAuthor.php?job=update" method="post">
-		<input type="hidden" name="UserID" value='<?php echo $row['UserID'];?>'><br>
-		<input type="hidden" name="Password" value='<?php echo $row['Password'];?>'><br>
 		<font size="4" color="#ffffff">First Name: <input type="text" name="First_Name" value='<?php echo $row['First_Name'];?>'><br>
 		<font size="4" color="#ffffff">Middle_Name: <input type="text" name="Middle_Name" value='<?php echo $row['Middle_Name'];?>'><br>
 		<font size="4" color="#ffffff">Last_Name: <input type="text" name="Last_Name" value='<?php echo $row['Last_Name'];?>'><br>
-		<font size="4" color="#ffffff">Street_Name: <input type="text" name="Street_Name" value='<?php echo $row['Street_Name'];?>'><br>
-		<font size="4" color="#ffffff">City: <input type="text" name="City" value='<?php echo $row['City'];?>'><br>
-		<font size="4" color="#ffffff">Country: <input type="text" name="Country" value='<?php echo $row['Country'];?>'><br>
-		<font size="4" color="#ffffff">Phone_Number: <input type="text" name="Phone_Number" value='<?php echo $row['Phone_Number'];?>'><br>
+		<font size="4" color="#ffffff">Date of Death: <input type="date" name="Date_Died" value='<?php echo $row['Date_Died'];?>'><br>
+		<font size="4" color="#ffffff">Country of Origin: <input type="text" name="Origin_Country" value='<?php echo $row['Origin_Country'];?>'><br>
+		<font size="4" color="#ffffff">Writing Style: <input type="text" name="Writing_Style" value='<?php echo $row['Writing_Style'];?>'><br>
 		<input type="submit" value="Update">
 	</form>
 <?php
