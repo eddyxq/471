@@ -57,7 +57,7 @@
 	<body>
 		<div>
 			<form action="searchBook.php" method="post">
-			   <font size="4" color="#ffffff">Book ISBN</font><input type="text" name="ISBN" required><br>
+			   <font size="4" color="#ffffff">Book ISBN</font><input type="text" name="ISBN"><br>
 			   <input type="submit" value="Search">
 			</form>
 			

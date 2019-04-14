@@ -57,7 +57,7 @@
 	<body>
 		<div>
 			<form action="searchReservation.php" method="post">
-			   <font size="4" color="#ffffff">UserID</font><input type="number" name ="UserID" required><br>
+			   <font size="4" color="#ffffff">UserID</font><input type="number" name ="UserID"><br>
 			   <input type="submit" value="Search My Reservations">
 			</form>
 			

@@ -87,11 +87,11 @@
 	</style>
 		<div>
 			<form action="reserveStudyRoom.php" method="post">	
-				<font size="4" color="#ffffff">User ID</font><input type="number" name ="UserID" required><br>
-				<font size="4" color="#ffffff">Room Number</font><input type="text" name ="Room_Number" required><br>
-				<font size="4" color="#ffffff">Date Booked</font><input type="date" name="Date_Booked" required><br>
-				<font size="4" color="#ffffff">Time Booked</font><input type="time" name="Time_Booked" required><br>
-				<font size="4" color="#ffffff">Booking Duration (In hours)</font><input type="number" name="Booking_Duration" required><br>
+				<font size="4" color="#ffffff">UserID</font><input type="number" name ="UserID"><br>
+				<font size="4" color="#ffffff">Room_Number</font><input type="text" name ="Room_Number"><br>
+				<font size="4" color="#ffffff">Date_Booked</font><input type="date" name="Date_Booked"><br>
+				<font size="4" color="#ffffff">Time_Booked</font><input type="time" name="Time_Booked"><br>
+				<font size="4" color="#ffffff">Booking_Duration (In hours)</font><input type="number" name="Booking_Duration"><br>
 				<input type="submit" value="Reserve">
 			</form>
 			

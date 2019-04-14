@@ -10,7 +10,6 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
-
 	input[type=number], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -20,7 +19,6 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
-	
 	input[type=date], select {
 	  width: 100%;
 	  padding: 12px 20px;
@@ -30,8 +28,7 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
-	
-		input[type=boolean], select {
+	input[type=boolean], select {
 	  width: 100%;
 	  padding: 12px 20px;
 	  margin: 8px 0;
@@ -40,8 +37,6 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
-
-
 	input[type=submit] {
 	 width: 500px;
 		display: inline-block;

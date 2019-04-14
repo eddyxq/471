@@ -24,7 +24,7 @@
 			Date_Borrowed='".$Date_Borrowed. "', 
 			Date_Returned='".$Date_Returned. "', 
 			Borrow_Duration='".$Borrow_Duration. "' 
-			where UserID='".$UserID."' AND ISBN='".$ISBN."'");
+			where UserID=".$UserID);
 		}
 	} 
 	if(isset($_GET['job'])){
@@ -32,7 +32,8 @@
 			$UserID = $_GET["UserID"];
 			$ISBN = $_GET["ISBN"];
 			$result = mysqli_query($con,"Delete from borrows where 
-			UserID='".$UserID."' AND ISBN='".$ISBN."'");
+			UserID='".$UserID. "' AND 
+			ISBN='". $ISBN);
 
 		}
 	}
@@ -57,8 +58,8 @@
 		echo "<td>" . $row['Date_Returned'] . "</td>";
 		echo "<td>" . $row['Borrow_Duration'] . "</td>";
 		echo "<td><a href='update_borrows.php?&amp;UserID= " . $row['UserID'] . "'>Return Book</a></td>";
-		echo "<td><a onClick= \"return confirm('Do you want to delete this entry?')\" href='returnbook.php?job=delete&amp;UserID=".$row['UserID']."
-		&amp;ISBN=".$row['ISBN']."'>Delete</a></td>";
+		//echo "<td><a onClick= \"return confirm('Do you want to delete this entry?')\" href='returnbook.php?job=delete&amp;UserID= " . $row['UserID'] ."
+		//&amp;ISBN= " . $row['ISBN'] ."'>Delete</a></td>";
 		echo "</tr>";
 	}
 

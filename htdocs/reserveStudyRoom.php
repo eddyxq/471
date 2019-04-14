@@ -18,7 +18,7 @@
 		}
 
 		$sql = "INSERT INTO booked (Room_Number, Date_Booked, Time_Booked, Booking_Duration) 
-		VALUES ('".$Room_Number."','".$Date_Booked."','".$Time_Booked."','".$Booking_Duration."')";
+		VALUES ('". $Room_Number."','". $Date_Booked ."','". $Time_Booked ."','". $Booking_Duration ."')";
 
 		$sql2 = "INSERT INTO reserves (UserID, Room_Number) VALUES ('". $UserID."','". $Room_Number ."')";
 		mysqli_query($con, $sql2);
