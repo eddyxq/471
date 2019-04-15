@@ -10,7 +10,7 @@ In order to run this system please do the following
 2. Download the project
 3. Locate the htdocs folder inside the installation files of XAMPP from the local disk
 	where XAMPP is installed
-4. Copy all the project files directly into the htdocs folder, and the images into the img folder
+4. Copy all the project files directly into the htdocs folder, and the image (library.png) into the img folder
 	(if they are not already there)
 5. Open XAMPP, and start Apache and MySQL
 6. Go to your preferred browser, and type localhost in the url box
